@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="only_servo.SLDASM">
+  name="a1_neck">
   <link
     name="stab_link">
     <inertial>
@@ -26,7 +26,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://only_servo.SLDASM/meshes/stab_link.STL" />
+          filename="package://a1_neck_description/meshes/stab_link.STL" />
       </geometry>
       <material
         name="">
@@ -40,7 +40,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://only_servo.SLDASM/meshes/stab_link.STL" />
+          filename="package://a1_neck_description/meshes/stab_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -66,7 +66,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://only_servo.SLDASM/meshes/servo2_link.STL" />
+          filename="package://a1_neck_description/meshes/servo2_link.STL" />
       </geometry>
       <material
         name="">
@@ -80,7 +80,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://only_servo.SLDASM/meshes/servo2_link.STL" />
+          filename="package://a1_neck_description/meshes/servo2_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -124,7 +124,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://only_servo.SLDASM/meshes/camera_mount_link.STL" />
+          filename="package://a1_neck_description/meshes/camera_mount_link.STL" />
       </geometry>
       <material
         name="">
@@ -138,7 +138,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://only_servo.SLDASM/meshes/camera_mount_link.STL" />
+          filename="package://a1_neck_description/meshes/camera_mount_link.STL" />
       </geometry>
     </collision>
   </link>

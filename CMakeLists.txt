@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 
-project(only_servo.SLDASM)
+project(a1_neck_description)
 
 find_package(catkin REQUIRED)
 
