@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="only_servo.SLDASM">
+  <link
+    name="stab_link">
+    <inertial>
+      <origin
+        xyz="0.012635 -5.1845E-09 0.0011677"
+        rpy="0 0 0" />
+      <mass
+        value="0.042672" />
+      <inertia
+        ixx="3.5455E-06"
+        ixy="-9.8833E-12"
+        ixz="-3.2724E-08"
+        iyy="8.6941E-06"
+        iyz="9.7525E-14"
+        izz="9.9716E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://only_servo.SLDASM/meshes/stab_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://only_servo.SLDASM/meshes/stab_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="servo2_link">
+    <inertial>
+      <origin
+        xyz="-0.0013648 0.016 0.0011677"
+        rpy="0 0 0" />
+      <mass
+        value="0.042672" />
+      <inertia
+        ixx="3.5455E-06"
+        ixy="-9.8831E-12"
+        ixz="-3.2724E-08"
+        iyy="8.6941E-06"
+        iyz="9.758E-14"
+        izz="9.9716E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://only_servo.SLDASM/meshes/servo2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 0.50196 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://only_servo.SLDASM/meshes/servo2_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servo1_to_servo2"
+    type="revolute">
+    <origin
+      xyz="0 -0.021 0"
+      rpy="-3.1416 -0.38051 0" />
+    <parent
+      link="stab_link" />
+    <child
+      link="servo2_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="6" />
+  </joint>
+  <link
+    name="camera_mount_link">
+    <inertial>
+      <origin
+        xyz="0.0015655 0.011821 0.005"
+        rpy="0 0 0" />
+      <mass
+        value="0.11501" />
+      <inertia
+        ixx="3.6446E-05"
+        ixy="1.0588E-22"
+        ixz="-1.38E-21"
+        iyy="6.5851E-06"
+        iyz="-1.2581E-21"
+        izz="4.1114E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://only_servo.SLDASM/meshes/camera_mount_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://only_servo.SLDASM/meshes/camera_mount_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="servo2_to_camera"
+    type="revolute">
+    <origin
+      xyz="0 0.016 0.021"
+      rpy="0 0 1.7325" />
+    <parent
+      link="servo2_link" />
+    <child
+      link="camera_mount_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="10"
+      velocity="6" />
+  </joint>
+</robot>
