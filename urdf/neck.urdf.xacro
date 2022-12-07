@@ -8,6 +8,7 @@
     <xacro:property name="friction" value="2.369E-4"/>
 
   <xacro:macro name="a1_neck" params="parent *origin">
+    <xacro:property name="M_PI" value="3.1415926535897931" />
 
     <!-- connect external origin with local root link -->
     <joint name="a1_neck_joint" type="fixed">
@@ -18,9 +19,7 @@
 
     <link name="servo_link_1">
       <inertial>
-        <origin
-          xyz="0.012635 0.0 0.0011677"
-          rpy="0 0 0" />
+        <origin xyz="0.012635 0.0 0.0011677" rpy="0 0 0" />
         <mass
           value="0.042672" />
         <inertia
@@ -115,6 +114,8 @@
         velocity="6" />
       <dynamics damping="${damping}" friction="${friction}"/>
     </joint>
+
+    <!-- Dummy link to connect realsense xacro -->
     <link name="camera_mount_link"/>
     <joint
       name="servo2_to_camera"
