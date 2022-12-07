@@ -4,16 +4,19 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot name="a1_neck" xmlns:xacro="http://ros.org/wiki/xacro">
 
+    <xacro:property name="damping" value="3.121E-6"/>
+    <xacro:property name="friction" value="2.369E-4"/>
+
   <xacro:macro name="a1_neck" params="parent *origin">
 
     <!-- connect external origin with local root link -->
     <joint name="a1_neck_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="stab_link" />
+      <child link="servo_link_1" />
     </joint>
 
-    <link name="stab_link">
+    <link name="servo_link_1">
       <inertial>
         <origin
           xyz="0.012635 0.0 0.0011677"
@@ -34,7 +37,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://a1_neck_description/meshes/stab_link.STL" />
+            filename="package://a1_neck_description/meshes/servo_link_1.STL" />
         </geometry>
         <material
           name="">
@@ -44,16 +47,18 @@
       </visual>
       <collision>
         <origin
-          xyz="0 0 0"
+          xyz="0.013 0 0.002"
           rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://a1_neck_description/meshes/stab_link.STL" />
-        </geometry>
+            <geometry>
+                <box size=".05 .028 .033"/>
+            </geometry>
+            <material name="">
+              <color rgba="1. 0. 0. 1" />
+            </material>
       </collision>
     </link>
     <link
-      name="servo2_link">
+      name="servo_link_2">
       <inertial>
         <origin
           xyz="-0.0013648 0.016 0.0011677"
@@ -74,7 +79,7 @@
           rpy="0 0 0" />
         <geometry>
           <mesh
-            filename="package://a1_neck_description/meshes/servo2_link.STL" />
+            filename="package://a1_neck_description/meshes/servo_link_2.STL" />
         </geometry>
         <material
           name="">
@@ -84,12 +89,11 @@
       </visual>
       <collision>
         <origin
-          xyz="0 0 0"
+          xyz="0 0.016 0"
           rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://a1_neck_description/meshes/servo2_link.STL" />
-        </geometry>
+            <geometry>
+                <box size=".055 .028 .033"/>
+            </geometry>
       </collision>
     </link>
     <joint
@@ -97,11 +101,11 @@
       type="revolute">
       <origin
         xyz="0 -0.021 0"
-        rpy="-3.1416 -0.38051 0" />
+        rpy="-3.1416 0 0" />
       <parent
-        link="stab_link" />
+        link="servo_link_1" />
       <child
-        link="servo2_link" />
+        link="servo_link_2" />
       <axis
         xyz="0 1 0" />
       <limit
@@ -109,55 +113,17 @@
         upper="1.57"
         effort="10"
         velocity="6" />
+      <dynamics damping="${damping}" friction="${friction}"/>
     </joint>
-    <link
-      name="camera_mount_link">
-      <inertial>
-        <origin
-          xyz="0.0015655 0.011821 0.005"
-          rpy="0 0 0" />
-        <mass
-          value="0.11501" />
-        <inertia
-          ixx="3.6446E-05"
-          ixy="1.0588E-22"
-          ixz="-1.38E-21"
-          iyy="6.5851E-06"
-          iyz="-1.2581E-21"
-          izz="4.1114E-05" />
-      </inertial>
-      <visual>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://a1_neck_description/meshes/camera_mount_link.STL" />
-        </geometry>
-        <material
-          name="">
-          <color
-            rgba="0.79216 0.81961 0.93333 1" />
-        </material>
-      </visual>
-      <collision>
-        <origin
-          xyz="0 0 0"
-          rpy="0 0 0" />
-        <geometry>
-          <mesh
-            filename="package://a1_neck_description/meshes/camera_mount_link.STL" />
-        </geometry>
-      </collision>
-    </link>
+    <link name="camera_mount_link"/>
     <joint
       name="servo2_to_camera"
       type="revolute">
       <origin
         xyz="0 0.016 0.021"
-        rpy="0 0 1.7325" />
+        rpy="0 0 3.1415" />
       <parent
-        link="servo2_link" />
+        link="servo_link_2" />
       <child
         link="camera_mount_link" />
       <axis
@@ -167,6 +133,7 @@
         upper="1.57"
         effort="10"
         velocity="6" />
+      <dynamics damping="${damping}" friction="${friction}"/>
     </joint>
   </xacro:macro>
 </robot>
